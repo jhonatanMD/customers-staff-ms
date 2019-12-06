@@ -7,6 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+
 @Document(collection = "CustomerStaff")
 @JsonPropertyOrder({"idC","nameC","lastNameC","dniC","Addr","Num"})
 public class CustomerEntity {
