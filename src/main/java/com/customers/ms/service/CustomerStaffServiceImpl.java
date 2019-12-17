@@ -39,4 +39,11 @@ public class CustomerStaffServiceImpl  implements ICustomerStaffService{
 		
 		return repository.deleteById(id);
 	}
+
+
+		@Override
+		public Flux<CustomerEntity> findCustomersDni(String dni) {
+			//
+			return repository.findByDniC(dni);
+		}
 }

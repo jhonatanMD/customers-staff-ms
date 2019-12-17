@@ -1,10 +1,6 @@
 package com.customers.ms.controller;
 
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +14,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.customers.ms.model.CustomerEntity;
 import com.customers.ms.service.CustomerStaffServiceImpl;
+import com.customers.ms.service.ICustomerStaffService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -26,11 +23,17 @@ import reactor.core.publisher.Mono;
 @RequestMapping("api")
 public class RestControllerCustomers {
 	@Autowired
-	CustomerStaffServiceImpl implCustomer;
+	ICustomerStaffService implCustomer;
 	
 	@GetMapping("/getCustomers")
 	public Flux<CustomerEntity> getCustomers(){
 		return implCustomer.allCustomersStaff();
+	}
+	
+	@GetMapping("/getCustomer/{dni}")
+
+	public Flux<CustomerEntity> getCustomerDni(@PathVariable String dni){
+		return implCustomer.findCustomersDni(dni);
 	}
 	
 	@PostMapping("/postCustomer")

@@ -15,5 +15,6 @@ public interface ICustomerStaffService  {
 	
 	Mono<Void> dltCustomer(String id);
 	
+	Flux<CustomerEntity> findCustomersDni(String dni);
 	
 }

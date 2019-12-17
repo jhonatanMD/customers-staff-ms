@@ -1,16 +1,12 @@
 package com.customers.ms.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-
-import lombok.Getter;
-import lombok.Setter;
-
 
 @Document(collection = "CustomerStaff")
 @JsonPropertyOrder({"idC","nameC","lastNameC","dniC","Addr","Num"})
@@ -25,14 +21,15 @@ public class CustomerEntity {
 	@NotEmpty(message = "not lastname")
 	private String lastNameC;
 	
-	@NotEmpty(message = "not dni")
+	@NotEmpty(message = "not dniC")
+	@Size(min = 8, max = 8, message = "must contain 8 characters")
 	private String dniC;
 
-	@NotEmpty(message = "not dni")
+	@NotEmpty(message = "not Addr")
 	private String Addr;
 
 	
-	@NotEmpty(message = "not dni")
+	@NotEmpty(message = "not Num")
 	private String Num;
 
 	public String getIdC() {
